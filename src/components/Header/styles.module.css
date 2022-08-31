@@ -1,0 +1,54 @@
+.header {
+  position: fixed;
+  max-width: 1200px;
+  width: 100%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 70px;
+  z-index: 1;
+}
+
+.logo {
+  padding: 20px 0;
+  width: 50%;
+}
+
+.navWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navWrapper .navList {
+  display: flex;
+  align-items: center;
+}
+
+.navList a {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-left: 14px;
+}
+
+.navList::after {
+  content: '';
+  border: thin solid #fff;
+  height: 30px;
+  margin: 0 20px;
+}
+
+.cartIcon,
+.searchIcon,
+.loginIcon {
+  height: 20px;
+  filter: invert(1);
+}
+
+.searchIcon,
+.loginIcon {
+  margin-left: 20px;
+}

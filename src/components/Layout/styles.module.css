@@ -1,0 +1,10 @@
+.layout {
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+  padding-top: 70px;
+  width: 1200px;
+  width: 100%;
+  margin: auto;
+  overflow-y: scroll;
+}

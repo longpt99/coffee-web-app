@@ -1,0 +1,136 @@
+.categorySection {
+  background-color: #fff;
+  padding: 50px 0;
+}
+
+.categorySection > .textIntro,
+.categorySection > .textHeading {
+  text-align: center;
+}
+
+.categorySection > .textIntro {
+  font-style: italic;
+  color: #c7a17a;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+}
+
+.categorySection > .textHeading {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #30271c;
+  font-size: 2rem;
+  font-weight: 700;
+  position: relative;
+}
+
+.categorySection > .textHeading::after {
+  content: '';
+  border-bottom: 2px solid #c7a17a;
+  width: 150px;
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+}
+
+.wrapper > div:first-child {
+  text-align: end;
+}
+
+.wrapper > div:nth-child(2) {
+  width: 50%;
+}
+
+.wrapper .col:first-child .content {
+  display: flex;
+  margin-bottom: 50px;
+  width: 90%;
+  margin-left: auto;
+}
+
+.wrapper .col:first-child .content div {
+  margin-right: 16px;
+}
+
+.content img {
+  height: 50px;
+  width: 50px;
+}
+
+.content h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: -1px;
+}
+
+.content p {
+  font-weight: 300;
+  color: #6b6b6b;
+}
+
+.wrapper .col:last-child .content {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 50px;
+  width: 90%;
+  margin-right: auto;
+}
+
+.wrapper .col:first-child .content:first-child {
+  animation: 0.5s ease-in swingViewportRL;
+}
+
+.wrapper .col:first-child .content:nth-child(2) {
+  animation: 0.7s ease-in swingViewportRL;
+}
+
+.wrapper .col:first-child .content:last-child {
+  animation: 0.9s ease-in swingViewportRL;
+}
+
+.wrapper .col:last-child .content:first-child {
+  animation: 0.5s ease-in swingViewportLR;
+}
+
+.wrapper .col:last-child .content:nth-child(2) {
+  animation: 0.7s ease-in swingViewportLR;
+}
+
+.wrapper .col:last-child .content:last-child {
+  animation: 0.9s ease-in swingViewportLR;
+}
+
+@keyframes swingViewportRL {
+  from {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes swingViewportLR {
+  from {
+    transform: translateX(10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.wrapper .col:last-child .content div {
+  margin-left: 16px;
+}

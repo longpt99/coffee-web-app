@@ -1,0 +1,102 @@
+.footer {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 70px 50px;
+}
+
+.textHeading {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.workingHour {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  display: flex;
+}
+
+.workingHour .textDay {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #9a6e41;
+}
+
+.workingHour .line {
+  flex-grow: 0.85;
+  border-bottom: thin solid #393631;
+  transform: translateY(-5px);
+  margin: 0 auto;
+}
+
+.workingHour .textHour {
+  color: #acacac;
+  letter-spacing: -1px;
+}
+
+article {
+  padding: 0 30px;
+}
+
+.postContent {
+  border-bottom: thin solid #393631;
+  padding: 10px 0;
+}
+
+.postContent:first-child {
+  padding-top: 0;
+}
+
+.postContent:last-child {
+  border: none;
+}
+
+.postContent .textTitle {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.postContent .textTime {
+  font-size: 0.8rem;
+  color: #9a6e41;
+  font-style: italic;
+}
+
+.contactInfo {
+  font-size: 0.9rem;
+  line-height: 30px;
+  color: #acacac;
+}
+
+.contactInfo .textEmail {
+  color: #9a6e41;
+  word-break: break-word;
+}
+
+.locationInfo {
+  font-size: 0.8rem;
+  border-bottom: thin solid #393631;
+}
+
+.locationInfo:last-child {
+  border-bottom: none;
+}
+
+.locationInfo .textName {
+  text-transform: uppercase;
+}
+
+.locationInfo .textName:nth-child(1) {
+  margin-top: 20px;
+}
+
+.locationInfo .textAddress {
+  color: #acacac;
+  font-weight: 300;
+  padding: 20px 0;
+}
