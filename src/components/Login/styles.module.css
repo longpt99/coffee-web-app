@@ -1,0 +1,103 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  color: white;
+  opacity: 1;
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  background-color: white;
+  display: flex;
+  color: #000;
+}
+
+.headingText {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.inputForm {
+  display: block;
+  border: thin solid #ccc;
+  width: 100%;
+  box-shadow: none;
+  outline: none;
+  padding: 10px 10px;
+}
+
+.loginContainer {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  height: 100%;
+}
+
+.formContent {
+  margin: 30px 0;
+}
+
+.formContent .forgotPassword {
+  text-align: end;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  display: block;
+}
+
+.formContent .forgotPassword:hover {
+  opacity: 1;
+}
+
+.btnLogin {
+  background-color: #000;
+}
+
+.signInSocialsText {
+  text-align: center;
+  position: relative;
+}
+
+.signInSocialsText span {
+  position: relative;
+}
+
+.signInSocialsText span::before {
+  content: '';
+  width: 35px;
+  border-bottom: thin solid #000;
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateX(-50%);
+}
+
+.signInSocialsText span::after {
+  content: '';
+  width: 35px;
+  border-bottom: thin solid #000;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateX(50%);
+}

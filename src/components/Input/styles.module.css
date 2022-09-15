@@ -1,0 +1,13 @@
+.inputForm {
+  display: block;
+  border: thin solid #ccc;
+  width: 100%;
+  box-shadow: none;
+  outline: none;
+  padding: 10px 10px;
+  margin: 10px 0;
+}
+
+.label {
+  cursor: pointer;
+}

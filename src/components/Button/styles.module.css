@@ -11,3 +11,14 @@
   background-color: #fff;
   color: #000;
 }
+
+.login {
+  width: 100%;
+  background-color: #9a6e41 !important;
+  opacity: 0.8;
+  margin: 10px 0;
+}
+
+.login:hover {
+  opacity: 1;
+}
