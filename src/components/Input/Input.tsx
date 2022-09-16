@@ -6,6 +6,7 @@ interface InputProps {
   label: string;
   placeholder?: string;
   isRequire?: boolean;
+  [key: string]: any;
 }
 
 function Input(props: InputProps) {
@@ -14,14 +15,7 @@ function Input(props: InputProps) {
       <label className={styles.label} htmlFor={props.name}>
         {props.label}
       </label>
-      <input
-        className={styles.inputForm}
-        id={props.name}
-        name={props.name}
-        type={props.type ?? 'text'}
-        required={props.isRequire ?? true}
-        placeholder={props.placeholder}
-      />
+      <input className={styles.inputForm} {...props} />
     </>
   );
 }

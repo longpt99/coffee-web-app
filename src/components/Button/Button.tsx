@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import styles from './styles.module.css';
 
 interface ButtonProps {
-  children: string;
+  children: any;
   link?: string;
   type?: 'button' | 'submit';
   className?: string;

@@ -22,3 +22,13 @@
 .login:hover {
   opacity: 1;
 }
+
+.social {
+  border: thin solid #9a6e41;
+  color: #000;
+  border-radius: 5px;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

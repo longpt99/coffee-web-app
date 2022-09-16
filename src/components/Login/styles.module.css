@@ -73,6 +73,12 @@
   background-color: #000;
 }
 
+.signSocials {
+  display: flex;
+  margin: 20px 0;
+  justify-content: space-around;
+}
+
 .signInSocialsText {
   text-align: center;
   position: relative;
@@ -100,4 +106,25 @@
   top: 50%;
   left: 100%;
   transform: translateX(50%);
+}
+
+.socialIcon {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.signUpText {
+  text-align: center;
+}
+
+.signUpText span {
+  color: #9a6e41;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.signUpText span:hover {
+  opacity: 0.8;
+  text-decoration: underline;
 }

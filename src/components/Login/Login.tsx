@@ -1,12 +1,14 @@
 import classNames from 'classnames';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { facebookIcon, googleIcon } from '../../assets/icons';
 import { moment3 } from '../../assets/images';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import styles from './styles.module.css';
+
 type Inputs = {
-  example: string;
-  exampleRequired: string;
+  email: string;
+  password: string;
 };
 
 function Login() {
@@ -14,13 +16,13 @@ function Login() {
     register,
     handleSubmit,
     watch,
+    getValues,
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
   const socials = [
-    { name: 'Google', icon: '' },
-    { name: 'Facebook', icon: '' },
+    { name: 'Google', icon: googleIcon },
+    { name: 'Facebook', icon: facebookIcon },
   ];
 
   return (
@@ -41,18 +43,19 @@ function Login() {
               >
                 <Input
                   label="Email"
-                  name="email"
                   placeholder="Enter your email"
+                  {...register('email')}
                 />
                 <Input
                   label="Password"
-                  name="password"
                   type="password"
                   placeholder="Enter your password"
+                  {...register('password')}
                 />
                 <a className={styles.forgotPassword} href="#">
                   Forgot password
                 </a>
+                <input type="submit" />
                 <Button type="submit" className="login">
                   Login
                 </Button>
@@ -62,10 +65,17 @@ function Login() {
               </p>
               <div className={styles.signSocials}>
                 {socials.map((social, key) => (
-                  <Button>{social.name}</Button>
+                  <Button className="social">
+                    <img
+                      className={styles.socialIcon}
+                      src={social.icon}
+                      alt=""
+                    />
+                    {social.name}
+                  </Button>
                 ))}
               </div>
-              <p>
+              <p className={styles.signUpText}>
                 Don't have an account? <span>Sign up</span>
               </p>
             </div>
