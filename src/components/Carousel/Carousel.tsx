@@ -4,9 +4,10 @@ import styles from './styles.module.css';
 
 interface CarouselProps {
   children: any;
+  hiddenDirection?: boolean;
 }
 
-function Carousel({ children }: CarouselProps) {
+function Carousel({ children, hiddenDirection }: CarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -41,32 +42,35 @@ function Carousel({ children }: CarouselProps) {
             display: activeIndex === index ? 'block' : 'none',
           });
         })}
-        <div className={styles.direction}>
-          <a
-            onClick={() => {
-              updateIndex(activeIndex - 1);
-            }}
-            href="#0"
-          >
-            <img
-              src={arrowLeftIcon}
-              alt="arrow_left"
-              className={styles.directionIcon}
-            />
-          </a>
-          <a
-            onClick={() => {
-              updateIndex(activeIndex + 1);
-            }}
-            href="#0"
-          >
-            <img
-              src={arrowRightIcon}
-              alt="arrow_right"
-              className={styles.directionIcon}
-            />
-          </a>
-        </div>
+        {!hiddenDirection && (
+          <div className={styles.direction}>
+            <a
+              onClick={() => {
+                updateIndex(activeIndex - 1);
+              }}
+              href="#0"
+            >
+              <img
+                src={arrowLeftIcon}
+                alt="arrow_left"
+                className={styles.directionIcon}
+              />
+            </a>
+            <a
+              onClick={() => {
+                updateIndex(activeIndex + 1);
+              }}
+              href="#0"
+            >
+              <img
+                src={arrowRightIcon}
+                alt="arrow_right"
+                className={styles.directionIcon}
+              />
+            </a>
+          </div>
+        )}
+
         <div className={styles.indicators}>
           {React.Children.map(children, (child, index) => {
             return (

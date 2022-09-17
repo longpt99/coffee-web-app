@@ -11,12 +11,12 @@ interface InputProps {
 
 function Input(props: InputProps) {
   return (
-    <>
+    <div>
       <label className={styles.label} htmlFor={props.name}>
         {props.label}
       </label>
       <input className={styles.inputForm} {...props} />
-    </>
+    </div>
   );
 }
 
