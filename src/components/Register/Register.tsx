@@ -14,7 +14,7 @@ type Inputs = {
   lastName: string;
 };
 
-function Register() {
+function Register(props: any) {
   const {
     register,
     handleSubmit,
@@ -56,7 +56,8 @@ function Register() {
           </Button>
         </form>
         <p className={styles.signUpText}>
-          Already have an account? <Link to="/sign-in">Sign In</Link>
+          Already have an account?
+          <span onClick={() => props.changePopupPage(true)}>Sign In</span>
         </p>
       </div>
     </div>

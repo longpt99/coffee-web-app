@@ -1,18 +1,16 @@
-import classNames from 'classnames';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { facebookIcon, googleIcon } from '../../assets/icons';
-import { moment3 } from '../../assets/images';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import styles from './styles.module.css';
-import { Link } from 'react-router-dom';
 
 type Inputs = {
   email: string;
   password: string;
 };
 
-function Login() {
+function Login(props: any) {
   const {
     register,
     handleSubmit,
@@ -44,6 +42,7 @@ function Login() {
             placeholder="Enter your password"
             {...register('password')}
           />
+          <input type="password" name="password" id="password" />
           <a className={styles.forgotPassword} href="#">
             Forgot password
           </a>
@@ -63,7 +62,8 @@ function Login() {
           ))}
         </div>
         <p className={styles.signUpText}>
-          Don't have an account? <Link to="/sign-up">Sign Up</Link>
+          Don't have an account?
+          <span onClick={() => props.changePopupPage(false)}>Sign Up</span>
         </p>
       </div>
     </div>

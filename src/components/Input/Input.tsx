@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import styles from './styles.module.css';
 
 interface InputProps {
@@ -9,15 +10,15 @@ interface InputProps {
   [key: string]: any;
 }
 
-function Input(props: InputProps) {
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return (
-    <div>
+    <>
       <label className={styles.label} htmlFor={props.name}>
         {props.label}
       </label>
-      <input className={styles.inputForm} {...props} />
-    </div>
+      <input className={styles.inputForm} ref={ref} {...props} />
+    </>
   );
-}
+});
 
 export default Input;

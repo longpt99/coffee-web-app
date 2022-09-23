@@ -5,9 +5,10 @@ import styles from './styles.module.css';
 interface CarouselProps {
   children: any;
   hiddenDirection?: boolean;
+  autoChange?: boolean;
 }
 
-function Carousel({ children, hiddenDirection }: CarouselProps) {
+function Carousel({ children, hiddenDirection, autoChange }: CarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -20,19 +21,21 @@ function Carousel({ children, hiddenDirection }: CarouselProps) {
     setActiveIndex(index);
   };
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (!paused) {
-  //       updateIndex(activeIndex + 1);
-  //     }
-  //   }, 5000);
+  if (autoChange) {
+    useEffect(() => {
+      const interval = setInterval(() => {
+        if (!paused) {
+          updateIndex(activeIndex + 1);
+        }
+      }, 5000);
 
-  //   return () => {
-  //     if (interval) {
-  //       clearInterval(interval);
-  //     }
-  //   };
-  // });
+      return () => {
+        if (interval) {
+          clearInterval(interval);
+        }
+      };
+    });
+  }
 
   return (
     <section className={styles.sectionContent}>

@@ -5,7 +5,7 @@ import searchIcon from '../../assets/icons/search.svg';
 import loginIcon from '../../assets/icons/circle-user.svg';
 import { useState } from 'react';
 
-function Header() {
+function Header(props: any) {
   return (
     <header className={styles.header}>
       <a href="#">
@@ -46,7 +46,7 @@ function Header() {
             alt="search_icon"
           />
         </button>
-        <a href="#">
+        <a onClick={() => props.showLoginModal(true)}>
           <img className={styles.loginIcon} src={loginIcon} alt="login_icon" />
         </a>
       </nav>

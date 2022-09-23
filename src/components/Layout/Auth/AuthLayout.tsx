@@ -24,7 +24,7 @@ function AuthLayout(props: any) {
       <div className={styles.container}>
         <div className="col2">
           <div className={styles.slide}>
-            <Carousel hiddenDirection={true}>
+            <Carousel hiddenDirection={true} autoChange={true}>
               {sliderContents.map((item, index) => (
                 <CarouselItem key={index}>{item}</CarouselItem>
               ))}

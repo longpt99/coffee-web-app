@@ -117,14 +117,14 @@
   text-align: center;
 }
 
-.signUpText a {
+.signUpText span {
   color: #9a6e41;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.1s;
 }
 
-.signUpText a:hover {
+.signUpText span:hover {
   opacity: 0.8;
   text-decoration: underline;
 }
