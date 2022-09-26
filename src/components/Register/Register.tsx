@@ -26,7 +26,7 @@ function Register(props: any) {
 
   return (
     <div className={styles.loginContainer}>
-      <div className="loginContent">
+      <div className={styles.loginContent}>
         <h2 className={styles.headingText}>Create an account</h2>
         <form className={styles.formContent} onSubmit={handleSubmit(onSubmit)}>
           <Input

@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
 }
 
 .slide {
@@ -23,8 +24,7 @@
 .container {
   color: white;
   opacity: 1;
-  position: absolute;
-  max-width: 800px;
+  max-width: 1200px;
   width: 100%;
   background-color: white;
   display: flex;

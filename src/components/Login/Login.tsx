@@ -27,7 +27,7 @@ function Login(props: any) {
 
   return (
     <div className={styles.loginContainer}>
-      <div className="loginContent">
+      <div className={styles.loginContent}>
         <h2 className={styles.headingText}>Welcome back Anam Lab</h2>
         <form className={styles.formContent} onSubmit={handleSubmit(onSubmit)}>
           <Input
@@ -42,7 +42,6 @@ function Login(props: any) {
             placeholder="Enter your password"
             {...register('password')}
           />
-          <input type="password" name="password" id="password" />
           <a className={styles.forgotPassword} href="#">
             Forgot password
           </a>

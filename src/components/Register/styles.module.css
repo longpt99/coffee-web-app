@@ -54,6 +54,10 @@
   height: 100%;
 }
 
+.loginContent {
+  width: 100%;
+}
+
 .formContent {
   margin: 30px 0;
 }

@@ -5,23 +5,27 @@ import styles from './styles.module.css';
 
 function AuthLayout(props: any) {
   const sliderContents = [
-    {
-      image: moment3,
-    },
-    {
-      image: moment4,
-    },
-    {
-      image: moment3,
-    },
-    {
-      image: moment4,
-    },
+    { image: moment3 },
+    { image: moment4 },
+    { image: moment3 },
+    { image: moment4 },
   ];
 
-  return (
-    <section className={styles.modal}>
-      <div className={styles.container}>
+  return props.shown ? (
+    <section
+      className={styles.modal}
+      onClick={() => {
+        // close modal when outside of modal is clicked
+        props.close();
+      }}
+    >
+      <div
+        className={styles.container}
+        onClick={(e) => {
+          // do not close modal if anything inside modal content is clicked
+          e.stopPropagation();
+        }}
+      >
         <div className="col2">
           <div className={styles.slide}>
             <Carousel hiddenDirection={true} autoChange={true}>
@@ -34,7 +38,7 @@ function AuthLayout(props: any) {
         <div className="col2">{props.children}</div>
       </div>
     </section>
-  );
+  ) : null;
 }
 
 export default AuthLayout;

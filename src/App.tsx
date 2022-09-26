@@ -13,16 +13,15 @@ import HomePage from './pages/Home';
 
 function App() {
   // const location = useLocation();
-  const [showPopup, setShowPopup] = useState(false);
+  const [modalShown, toggleModal] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
 
   const handleOnClickShowLoginModal = (val: any) => {
-    setShowPopup(val);
+    toggleModal(val);
   };
 
   const handleOnClickChangePage = (val: any) => {
     console.log(val);
-
     setIsLogin(val);
   };
 
@@ -31,15 +30,18 @@ function App() {
       <Router>
         <Header showLoginModal={handleOnClickShowLoginModal} />
         <HomePage />
-        {showPopup && (
-          <AuthLayout>
-            {isLogin ? (
-              <Login changePopupPage={handleOnClickChangePage} />
-            ) : (
-              <Register changePopupPage={handleOnClickChangePage} />
-            )}
-          </AuthLayout>
-        )}
+        <AuthLayout
+          shown={modalShown}
+          close={() => {
+            toggleModal(false);
+          }}
+        >
+          {isLogin ? (
+            <Login changePopupPage={handleOnClickChangePage} />
+          ) : (
+            <Register changePopupPage={handleOnClickChangePage} />
+          )}
+        </AuthLayout>
         <Switch></Switch>
       </Router>
     </React.Fragment>

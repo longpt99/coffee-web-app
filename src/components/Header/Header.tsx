@@ -46,9 +46,9 @@ function Header(props: any) {
             alt="search_icon"
           />
         </button>
-        <a onClick={() => props.showLoginModal(true)}>
+        <button onClick={() => props.showLoginModal(true)}>
           <img className={styles.loginIcon} src={loginIcon} alt="login_icon" />
-        </a>
+        </button>
       </nav>
     </header>
   );
