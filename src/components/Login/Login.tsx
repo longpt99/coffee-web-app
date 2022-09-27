@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
 import { facebookIcon, googleIcon } from '../../assets/icons';
+import axios from '../../utils/axios';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import styles from './styles.module.css';
@@ -8,6 +8,7 @@ import styles from './styles.module.css';
 type Inputs = {
   email: string;
   password: string;
+  grantType: string;
 };
 
 function Login(props: any) {
@@ -18,7 +19,6 @@ function Login(props: any) {
     getValues,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   const socials = [
     { name: 'Google', icon: googleIcon },
@@ -29,7 +29,10 @@ function Login(props: any) {
     <div className={styles.loginContainer}>
       <div className={styles.loginContent}>
         <h2 className={styles.headingText}>Welcome back Anam Lab</h2>
-        <form className={styles.formContent} onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className={styles.formContent}
+          onSubmit={handleSubmit(props.handleOnSubmitLoginForm)}
+        >
           <Input
             label="Email"
             placeholder="Enter your email"
@@ -41,6 +44,11 @@ function Login(props: any) {
             type="password"
             placeholder="Enter your password"
             {...register('password')}
+          />
+          <Input
+            type="hidden"
+            {...register('grantType', { value: 'password' })}
+            hidden={true}
           />
           <a className={styles.forgotPassword} href="#">
             Forgot password
