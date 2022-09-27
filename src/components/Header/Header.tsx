@@ -3,7 +3,7 @@ import logo from '../../assets/images/logo-2.png';
 import basketShoppingIcon from '../../assets/icons/basket-shopping.svg';
 import searchIcon from '../../assets/icons/search.svg';
 import loginIcon from '../../assets/icons/circle-user.svg';
-import { useState } from 'react';
+import { settingIcon } from '../../assets/icons';
 
 function Header(props: any) {
   return (
@@ -46,9 +46,27 @@ function Header(props: any) {
             alt="search_icon"
           />
         </button>
-        <button onClick={() => props.showLoginModal(true)}>
-          <img className={styles.loginIcon} src={loginIcon} alt="login_icon" />
-        </button>
+        {props.isLogin ? (
+          <button
+            onClick={() => {
+              props.handleOnClickLogout();
+            }}
+          >
+            <img
+              className={styles.loginIcon}
+              src={settingIcon}
+              alt="login_icon"
+            />
+          </button>
+        ) : (
+          <button onClick={() => props.showLoginModal(true)}>
+            <img
+              className={styles.loginIcon}
+              src={loginIcon}
+              alt="login_icon"
+            />
+          </button>
+        )}
       </nav>
     </header>
   );

@@ -79,3 +79,7 @@ img {
 .ml {
   margin-left: auto;
 }
+
+.relative {
+  position: relative;
+}

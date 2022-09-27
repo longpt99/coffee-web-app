@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+import { exitIcon } from '../../../assets/icons';
 import { moment3, moment4 } from '../../../assets/images';
 import Carousel from '../../Carousel/Carousel';
 import CarouselItem from '../../CarouselItem/CarouselItem';
@@ -15,14 +17,12 @@ function AuthLayout(props: any) {
     <section
       className={styles.modal}
       onClick={() => {
-        // close modal when outside of modal is clicked
         props.close();
       }}
     >
       <div
         className={styles.container}
         onClick={(e) => {
-          // do not close modal if anything inside modal content is clicked
           e.stopPropagation();
         }}
       >
@@ -35,7 +35,17 @@ function AuthLayout(props: any) {
             </Carousel>
           </div>
         </div>
-        <div className="col2">{props.children}</div>
+        <div className={classNames('relative', 'col2')}>
+          {props.children}
+          <img
+            src={exitIcon}
+            alt="exit_icon"
+            className={styles.exitIcon}
+            onClick={() => {
+              props.close();
+            }}
+          />
+        </div>
       </div>
     </section>
   ) : null;

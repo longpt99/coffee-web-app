@@ -22,14 +22,15 @@ type Inputs = {
 
 function App() {
   const [modalShown, toggleModal] = useState(false);
-  const [isLogin, setIsLogin] = useState(true);
-  const token = localStorage.getItem('access_token');
+  const [isLoginPopup, setIsLoginPopup] = useState(true);
+  const [token, setToken] = useState(localStorage.getItem('access_token'));
 
   const handleOnSubmitLoginForm: SubmitHandler<Inputs> = async (dataInput) => {
     const result = await axios.post('/auth/login', dataInput);
     console.log(result);
     localStorage.setItem('access_token', result.data.accessToken);
     localStorage.setItem('refresh_token', result.data.refreshToken);
+    setToken(result.data.accessToken);
     toggleModal(false);
   };
 
@@ -38,14 +39,22 @@ function App() {
   };
 
   const handleOnClickChangePage = (val: any) => {
-    console.log(val);
-    setIsLogin(val);
+    setIsLoginPopup(val);
+  };
+
+  const handleOnClickLogout = () => {
+    localStorage.clear();
+    setToken(null);
   };
 
   return (
     <React.Fragment>
       <AxiosInterceptor>
-        <Header showLoginModal={handleOnClickShowLoginModal} />
+        <Header
+          isLogin={!!token}
+          showLoginModal={handleOnClickShowLoginModal}
+          handleOnClickLogout={handleOnClickLogout}
+        />
         <HomePage />
         <AuthLayout
           shown={modalShown}
@@ -53,7 +62,7 @@ function App() {
             toggleModal(false);
           }}
         >
-          {isLogin ? (
+          {isLoginPopup ? (
             <Login
               changePopupPage={handleOnClickChangePage}
               handleOnSubmitLoginForm={handleOnSubmitLoginForm}
