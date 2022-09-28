@@ -10,7 +10,10 @@ interface ButtonProps {
 
 function Button(props: ButtonProps) {
   return props.link ? (
-    <a className={styles.btn} href={props.link}>
+    <a
+      className={classNames(styles.btn, styles[props.className ?? ''])}
+      href={props.link}
+    >
       {props.children}
     </a>
   ) : (

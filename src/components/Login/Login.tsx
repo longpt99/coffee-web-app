@@ -4,6 +4,7 @@ import axios from '../../utils/axios';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import styles from './styles.module.css';
+import queryString from 'query-string';
 
 type Inputs = {
   email: string;
@@ -20,9 +21,20 @@ function Login(props: any) {
     formState: { errors },
   } = useForm<Inputs>();
 
+  const stringifiedParams = queryString.stringify({
+    client_id: '2959728634319670',
+    redirect_uri: 'http://localhost:5173/',
+    scope: ['public_profile', 'email'].join(','), // comma seperated string
+    response_type: 'code',
+    auth_type: 'rerequest',
+    display: 'popup',
+  });
+
+  const facebookLoginUrl = `https://www.facebook.com/v15.0/dialog/oauth?${stringifiedParams}`;
+
   const socials = [
     { name: 'Google', icon: googleIcon },
-    { name: 'Facebook', icon: facebookIcon },
+    { name: 'Facebook', icon: facebookIcon, link: facebookLoginUrl },
   ];
 
   return (
@@ -62,7 +74,7 @@ function Login(props: any) {
         </p>
         <div className={styles.signSocials}>
           {socials.map((social, key) => (
-            <Button className="social">
+            <Button className="social" link={social.link}>
               <img className={styles.socialIcon} src={social.icon} alt="" />
               {social.name}
             </Button>
