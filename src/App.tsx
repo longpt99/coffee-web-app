@@ -12,9 +12,8 @@ import AuthLayout from './components/Layout/Auth/AuthLayout';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import HomePage from './pages/Home';
-import axios from 'axios';
 import queryString from 'query-string';
-import { AxiosInterceptor } from './utils/axios';
+import axios, { AxiosInterceptor } from './utils/axios';
 
 type Inputs = {
   email: string;
@@ -31,22 +30,24 @@ function App() {
   useEffect(() => {
     if (urlParams.code) {
       (async () => {
-        console.log(urlParams.code);
-
-        axios.defaults.baseURL = undefined;
         const { data } = await axios.get(
           'https://graph.facebook.com/v15.0/oauth/access_token',
           {
             params: {
               client_id: '2959728634319670',
               client_secret: '1aac188502dffc783a16d7b16e353a13',
-              redirect_uri: 'http://localhost:5173/',
+              redirect_uri: 'http://localhost:5173/?grantType=facebook',
               code: urlParams.code,
             },
           }
         );
         console.log(data); // { access_token, token_type, expires_in }
-        return data.access_token;
+        const token = data.access_token;
+        const response = await axios.post('/auth/login', {
+          token: token,
+          grantType: 'facebook',
+        });
+        console.log(response.data);
       })();
     }
     console.log(urlParams);

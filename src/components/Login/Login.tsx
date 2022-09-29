@@ -23,7 +23,7 @@ function Login(props: any) {
 
   const stringifiedParams = queryString.stringify({
     client_id: '2959728634319670',
-    redirect_uri: 'http://localhost:5173/',
+    redirect_uri: 'http://localhost:5173/?grantType=facebook',
     scope: ['public_profile', 'email'].join(','), // comma seperated string
     response_type: 'code',
     auth_type: 'rerequest',
