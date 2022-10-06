@@ -21,20 +21,13 @@ function Login(props: any) {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const stringifiedParams = queryString.stringify({
-    client_id: '2959728634319670',
-    redirect_uri: 'http://localhost:5173/?grantType=facebook',
-    scope: ['public_profile', 'email'].join(','), // comma seperated string
-    response_type: 'code',
-    auth_type: 'rerequest',
-    display: 'popup',
-  });
-
-  const facebookLoginUrl = `https://www.facebook.com/v15.0/dialog/oauth?${stringifiedParams}`;
-
   const socials = [
     { name: 'Google', icon: googleIcon },
-    { name: 'Facebook', icon: facebookIcon, link: facebookLoginUrl },
+    {
+      name: 'Facebook',
+      icon: facebookIcon,
+      link: 'http://localhost:8080/v1/auth/login/socials/facebook',
+    },
   ];
 
   return (
