@@ -1,6 +1,6 @@
 import Header from '../../components/Header/Header';
 import homeBackgroundImage from '../../assets/images/home-8-pattern.jpg';
-import HomeLayout from '../../components/Layout/HomeLayout';
+import HomeLayout from '../../components/Layout/Home/HomeLayout';
 import Carousel from '../../components/Carousel/Carousel';
 import CarouselItem from '../../components/CarouselItem/CarouselItem';
 import slideImage1 from '../../assets/images/h-8-slider-img-1.jpg';

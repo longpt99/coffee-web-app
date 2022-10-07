@@ -13,7 +13,7 @@ export interface ProductProps {
 
 export default function Product(props: ProductProps) {
   return (
-    <section className={classNames('sectionContent', styles.productSection)}>
+    <section className={classNames(styles.productSection)}>
       <p className={classNames(styles.textIntro)}>What happens hear</p>
       <h2 className={classNames(styles.textHeading)}>
         Favorite coffee flavours

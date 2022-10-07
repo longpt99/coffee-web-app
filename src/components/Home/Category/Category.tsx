@@ -12,7 +12,7 @@ interface CategoryProps {
 
 function Category(props: CategoryProps) {
   return (
-    <section className={classNames('sectionContent', styles.categorySection)}>
+    <section className={classNames(styles.categorySection)}>
       <p className={classNames(styles.textIntro)}>What happens here</p>
       <h2 className={classNames(styles.textHeading)}>Coffee build your base</h2>
       <div className={styles.wrapper}>

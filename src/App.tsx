@@ -14,6 +14,9 @@ import Register from './components/Register/Register';
 import HomePage from './pages/Home';
 import queryString from 'query-string';
 import axios, { AxiosInterceptor } from './utils/axios';
+import MainLayout from './components/Layout/Main/MainLayout';
+import Footer from './components/Footer/Footer';
+import { footerBackground } from './assets/images';
 
 type Inputs = {
   email: string;
@@ -27,31 +30,33 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem('access_token'));
   const urlParams = queryString.parse(window.location.search);
 
-  useEffect(() => {
-    if (urlParams.code) {
-      (async () => {
-        const { data } = await axios.get(
-          'https://graph.facebook.com/v15.0/oauth/access_token',
-          {
-            params: {
-              client_id: '2959728634319670',
-              client_secret: '1aac188502dffc783a16d7b16e353a13',
-              redirect_uri: 'http://localhost:5173/?grantType=facebook',
-              code: urlParams.code,
-            },
-          }
-        );
-        console.log(data); // { access_token, token_type, expires_in }
-        const token = data.access_token;
-        const response = await axios.post('/auth/login', {
-          token: token,
-          grantType: 'facebook',
-        });
-        console.log(response.data);
-      })();
-    }
-    console.log(urlParams);
-  }, [urlParams]);
+  console.log(urlParams, window.location.search, window.location);
+
+  // useEffect(() => {
+  //   if (urlParams.code) {
+  //     (async () => {
+  //       const { data } = await axios.get(
+  //         'https://graph.facebook.com/v15.0/oauth/access_token',
+  //         {
+  //           params: {
+  //             client_id: '2959728634319670',
+  //             client_secret: '1aac188502dffc783a16d7b16e353a13',
+  //             redirect_uri: 'http://localhost:5173/?grantType=facebook',
+  //             code: urlParams.code,
+  //           },
+  //         }
+  //       );
+  //       console.log(data); // { access_token, token_type, expires_in }
+  //       const token = data.access_token;
+  //       const response = await axios.post('/auth/login', {
+  //         token: token,
+  //         grantType: 'facebook',
+  //       });
+  //       console.log(response.data);
+  //     })();
+  //   }
+  //   console.log(urlParams);
+  // }, [urlParams]);
 
   const handleOnSubmitLoginForm: SubmitHandler<Inputs> = async (dataInput) => {
     const result = await axios.post('/auth/login', dataInput);
