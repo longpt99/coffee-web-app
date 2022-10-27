@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { SubmitHandler } from 'react-hook-form';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import React, { useEffect, useState } from "react";
+import { SubmitHandler } from "react-hook-form";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   useLocation,
-} from 'react-router-dom';
-import Header from './components/Header/Header';
-import AuthLayout from './components/Layout/Auth/AuthLayout';
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
-import HomePage from './pages/Home';
-import queryString from 'query-string';
-import axios, { AxiosInterceptor } from './utils/axios';
-import MainLayout from './components/Layout/Main/MainLayout';
-import Footer from './components/Footer/Footer';
-import { footerBackground } from './assets/images';
+} from "react-router-dom";
+import Header from "./components/Header/Header";
+import AuthLayout from "./components/Layout/Auth/AuthLayout";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import HomePage from "./pages/Home";
+import queryString from "query-string";
+import axios, { AxiosInterceptor } from "./utils/axios";
+import MainLayout from "./components/Layout/Main/MainLayout";
+import Footer from "./components/Footer/Footer";
+import { footerBackground } from "./assets/images";
 
 type Inputs = {
   email: string;
@@ -27,10 +27,8 @@ type Inputs = {
 function App() {
   const [modalShown, toggleModal] = useState(false);
   const [isLoginPopup, setIsLoginPopup] = useState(true);
-  const [token, setToken] = useState(localStorage.getItem('access_token'));
+  const [token, setToken] = useState(localStorage.getItem("access_token"));
   const urlParams = queryString.parse(window.location.search);
-
-  console.log(urlParams, window.location.search, window.location);
 
   // useEffect(() => {
   //   if (urlParams.code) {
@@ -59,10 +57,10 @@ function App() {
   // }, [urlParams]);
 
   const handleOnSubmitLoginForm: SubmitHandler<Inputs> = async (dataInput) => {
-    const result = await axios.post('/auth/login', dataInput);
+    const result = await axios.post("/auth/login", dataInput);
     console.log(result);
-    localStorage.setItem('access_token', result.data.accessToken);
-    localStorage.setItem('refresh_token', result.data.refreshToken);
+    localStorage.setItem("access_token", result.data.accessToken);
+    localStorage.setItem("refresh_token", result.data.refreshToken);
     setToken(result.data.accessToken);
     toggleModal(false);
   };

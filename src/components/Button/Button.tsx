@@ -1,25 +1,25 @@
-import classNames from 'classnames';
-import styles from './styles.module.css';
+import classNames from "classnames";
+import styles from "./styles.module.css";
 
 interface ButtonProps {
   children: any;
   link?: string;
-  type?: 'button' | 'submit';
+  type?: "button" | "submit";
   className?: string;
 }
 
 function Button(props: ButtonProps) {
   return props.link ? (
     <a
-      className={classNames(styles.btn, styles[props.className ?? ''])}
+      className={classNames(styles.btn, styles[props.className ?? ""])}
       href={props.link}
     >
       {props.children}
     </a>
   ) : (
     <button
-      className={classNames(styles.btn, styles[props.className ?? ''])}
-      type={props.type ?? 'button'}
+      className={classNames(styles.btn, styles[props.className ?? ""])}
+      type={props.type ?? "button"}
     >
       {props.children}
     </button>
