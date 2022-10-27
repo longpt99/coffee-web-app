@@ -20,59 +20,40 @@ function Login(props: any) {
     formState: { errors },
   } = useForm<Inputs>();
 
-  async function handleOpenNewTab(link: string) {
-    console.log(link);
-
-    const { data } = await axios.get(link);
-    console.log(data.link);
-    let code;
+  async function handleOpenNewTab(params: { grantType: string; link: string }) {
+    const { data } = await axios.get(params.link);
     const win = window.open(data.link, "win", "width = 500, height = 500");
     if (win) {
       win.focus();
-      const waitForToken = window.setInterval(function () {
-        const params = new URL(win.location.href).searchParams;
-        if (params.get("code")) {
+      const waitForToken = setInterval(function () {
+        if (win.closed) {
           clearInterval(waitForToken);
+        }
+
+        const searchParams = new URL(win.location.href).searchParams;
+        if (searchParams.get("code")) {
           win.close();
-          code = params.get("code");
-          (async () => {
-            const { data } = await axios.post("/auth/login", {
-              grantType: "facebook",
-              code: code,
-            });
-            console.log(data);
-          })();
+          props.handleOnSubmitLoginForm({
+            code: searchParams.get("code"),
+            grantType: params.grantType,
+          });
         }
       }, 1000);
-      // win.onload = () => {
-      //   var s = win.document.createElement("script");
-      //   s.type = "text/javascript";
-      //   var code = 'alert("hello world!");';
-      //   try {
-      //     s.appendChild(win.document.createTextNode(code));
-      //     win.document.body.appendChild(s);
-      //   } catch (e) {
-      //     s.text = code;
-      //     win.document.body.appendChild(s);
-      //   }
-      // };
-      // console.log(win);
-
-      // win.document.write("<script>alert(window.location.host)</script>");
     }
-    console.log("Code: ", code);
   }
 
   const socials = [
     {
       name: "Google",
       icon: googleIcon,
-      link: "http://localhost:8080/v1/auth/login/socials/facebook",
+      link: "http://localhost:8080/v1/auth/login/socials/google",
+      grantType: "google",
     },
     {
       name: "Facebook",
       icon: facebookIcon,
       link: "http://localhost:8080/v1/auth/login/socials/facebook",
+      grantType: "facebook",
     },
   ];
 
@@ -113,17 +94,23 @@ function Login(props: any) {
         </p>
         <div className={styles.signSocials}>
           {socials.map((social, key) => (
-            // <Button className="social" link={social.link}>
-            //   <img className={styles.socialIcon} src={social.icon} alt="" />
-            //   {social.name}
-            // </Button>
-            <button
+            <Button
+              key={key}
               className="social"
-              onClick={() => handleOpenNewTab(social.link)}
+              onClick={() =>
+                handleOpenNewTab({
+                  link: social.link,
+                  grantType: social.grantType,
+                })
+              }
             >
-              <img className={styles.socialIcon} src={social.icon} alt="" />
+              <img
+                className={styles.socialIcon}
+                src={social.icon}
+                alt={social.name}
+              />
               {social.name}
-            </button>
+            </Button>
           ))}
         </div>
         <p className={styles.signUpText}>

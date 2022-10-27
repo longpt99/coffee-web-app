@@ -1,11 +1,7 @@
-import classNames from 'classnames';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { facebookIcon, googleIcon } from '../../assets/icons';
-import { moment3 } from '../../assets/images';
-import Button from '../Button/Button';
-import Input from '../Input/Input';
-import styles from './styles.module.css';
-import { Link } from 'react-router-dom';
+import { SubmitHandler, useForm } from "react-hook-form";
+import Button from "../Button/Button";
+import Input from "../Input/Input";
+import styles from "./styles.module.css";
 
 type Inputs = {
   email: string;
@@ -32,24 +28,24 @@ function Register(props: any) {
           <Input
             label="Fist Name"
             placeholder="Enter your first name"
-            {...register('firstName', { required: true })}
+            {...register("firstName", { required: true })}
           />
           <Input
             label="Last Name"
             placeholder="Enter your last name"
-            {...register('lastName')}
+            {...register("lastName")}
           />
           <Input
             label="Email"
             placeholder="Enter your email"
             type="email"
-            {...register('email')}
+            {...register("email")}
           />
           <Input
             label="Password"
             type="password"
             placeholder="Enter your password"
-            {...register('password')}
+            {...register("password")}
           />
           <Button type="submit" className="login">
             Create account
