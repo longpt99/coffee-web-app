@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { SubmitHandler } from "react-hook-form";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header/Header";
 import AuthLayout from "./components/Layout/Auth/AuthLayout";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import HomePage from "./pages/Home";
+import ProductPage from "./pages/Menu";
 import axios, { AxiosInterceptor } from "./utils/axios";
 
 type Inputs = {
@@ -50,7 +51,6 @@ function App() {
             showLoginModal={handleOnClickShowLoginModal}
             handleOnClickLogout={handleOnClickLogout}
           />
-          <HomePage />
           <AuthLayout
             shown={modalShown}
             close={() => {
@@ -66,7 +66,14 @@ function App() {
               <Register changePopupPage={handleOnClickChangePage} />
             )}
           </AuthLayout>
-          <Switch></Switch>
+          <Switch>
+            <Route path="/" exact>
+              <HomePage />
+            </Route>
+            <Route path="/menu" exact>
+              <ProductPage />
+            </Route>
+          </Switch>
         </Router>
       </AxiosInterceptor>
     </React.Fragment>
