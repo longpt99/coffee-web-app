@@ -5,11 +5,13 @@ import { useQuery } from "react-query";
 import axios from "../../utils/axios";
 import React, { useEffect, useState } from "react";
 import ModalLayout from "../../components/Layout/Modal/Modal";
+import ProductDetail from "../../components/ProductDetail/ProductDetail";
 
 function ProductPage() {
   const [modalShown, toggleModal] = useState(false);
   const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
   // Fetcher function
   const getProducts = async () => {
     const res = await axios.get(`/products`);
@@ -34,7 +36,10 @@ function ProductPage() {
   );
 
   function handleOnClickAddProduct(id) {
-    setProductId(id);
+    console.log("handleOnClickAddProduct");
+
+    // setProductId(id);
+    toggleModal(!modalShown);
     productDetail.refetch();
   }
 
@@ -50,12 +55,16 @@ function ProductPage() {
 
   return (
     <React.Fragment>
-      <ModalLayout
-        shown={modalShown}
-        close={() => {
-          toggleModal(false);
-        }}
-      ></ModalLayout>
+      {modalShown && (
+        <ModalLayout
+          shown={modalShown}
+          close={() => {
+            toggleModal(!modalShown);
+          }}
+        >
+          <ProductDetail>{product}</ProductDetail>
+        </ModalLayout>
+      )}
       <MainLayout>
         <Background>Menu</Background>
         <ListProduct handleOnClickAddProduct={handleOnClickAddProduct}>
