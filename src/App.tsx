@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import HomePage from "./pages/Home";
 import ProductPage from "./pages/Menu";
+import ProfilePage from "./pages/Profile";
 import axios, { AxiosInterceptor } from "./utils/axios";
 
 type Inputs = {
@@ -67,11 +68,14 @@ function App() {
             )}
           </AuthLayout>
           <Switch>
-            <Route path="/" exact>
-              <HomePage />
-            </Route>
             <Route path="/menu" exact>
               <ProductPage />
+            </Route>
+            <Route path="/profile" exact>
+              <ProfilePage />
+            </Route>
+            <Route path="/" exact>
+              <HomePage />
             </Route>
           </Switch>
         </Router>

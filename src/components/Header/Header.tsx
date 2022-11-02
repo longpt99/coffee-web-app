@@ -1,9 +1,10 @@
-import styles from './styles.module.css';
-import logo from '../../assets/images/logo-2.png';
-import basketShoppingIcon from '../../assets/icons/basket-shopping.svg';
-import searchIcon from '../../assets/icons/search.svg';
-import loginIcon from '../../assets/icons/circle-user.svg';
-import { settingIcon } from '../../assets/icons';
+import styles from "./styles.module.css";
+import logo from "../../assets/images/logo-2.png";
+import basketShoppingIcon from "../../assets/icons/basket-shopping.svg";
+import searchIcon from "../../assets/icons/search.svg";
+import loginIcon from "../../assets/icons/circle-user.svg";
+import { settingIcon } from "../../assets/icons";
+import { Link } from "react-router-dom";
 
 function Header(props: any) {
   return (
@@ -39,7 +40,7 @@ function Header(props: any) {
             alt="shopping_cart"
           />
         </a>
-        <button>
+        <button className={styles.menuIcon}>
           <img
             className={styles.searchIcon}
             src={searchIcon}
@@ -47,19 +48,51 @@ function Header(props: any) {
           />
         </button>
         {props.isLogin ? (
-          <button
-            onClick={() => {
-              props.handleOnClickLogout();
-            }}
-          >
+          <div className={styles.setting}>
             <img
               className={styles.loginIcon}
               src={settingIcon}
               alt="login_icon"
             />
-          </button>
+            <ul className={styles.settingMenu}>
+              <li className={styles.settingItem}>
+                <img
+                  className={styles.settingIcon}
+                  src={settingIcon}
+                  alt="login_icon"
+                />
+                <Link to="/profile" className={styles.settingTab}>
+                  Profile
+                </Link>
+              </li>
+              <li className={styles.settingItem}>
+                <img
+                  className={styles.settingIcon}
+                  src={settingIcon}
+                  alt="login_icon"
+                />
+                <button
+                  onClick={() => {
+                    props.handleOnClickLogout();
+                  }}
+                  className={styles.settingTab}
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
         ) : (
-          <button onClick={() => props.showLoginModal(true)}>
+          // <button
+          //   onClick={() => {
+          //     props.handleOnClickLogout();
+          //   }}
+          // >
+          // </button>
+          <button
+            onClick={() => props.showLoginModal(true)}
+            className={styles.menuIcon}
+          >
             <img
               className={styles.loginIcon}
               src={loginIcon}
