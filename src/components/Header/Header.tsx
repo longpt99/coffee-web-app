@@ -15,22 +15,13 @@ function Header(props: any) {
       <nav className={styles.navWrapper}>
         <ul className={styles.navList}>
           <li className={styles.menuItem}>
-            <a href="">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="">Menu</a>
+            <Link to="/menu">Menu</Link>
           </li>
           <li>
-            <a href="">Reservation</a>
-          </li>
-          <li>
-            <a href="">Pages</a>
-          </li>
-          <li>
-            <a href="">Blog</a>
-          </li>
-          <li>
-            <a href="">Shop</a>
+            <Link to="/blog">Blog</Link>
           </li>
         </ul>
         <a href="#">
