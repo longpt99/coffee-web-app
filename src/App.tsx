@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import AuthLayout from "./components/Layout/Auth/AuthLayout";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
+import BlogPage from "./pages/Blog";
 import HomePage from "./pages/Home";
 import ProductPage from "./pages/Menu";
 import axios, { AxiosInterceptor } from "./utils/axios";
@@ -70,8 +71,11 @@ function App() {
             <Route path="/" exact>
               <HomePage />
             </Route>
-            <Route path="/menu" exact>
+            <Route path="/menu">
               <ProductPage />
+            </Route>
+            <Route path="/blog">
+              <BlogPage />
             </Route>
           </Switch>
         </Router>

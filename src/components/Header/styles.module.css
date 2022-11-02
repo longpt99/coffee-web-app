@@ -1,6 +1,6 @@
 .header {
   position: fixed;
-  max-width: 1200px;
+  max-width: 1500px;
   width: 100%;
   margin-left: 50%;
   transform: translateX(-50%);
@@ -35,7 +35,7 @@
 }
 
 .navList::after {
-  content: '';
+  content: "";
   border: thin solid #fff;
   height: 30px;
   margin: 0 20px;

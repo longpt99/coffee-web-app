@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: calc(100% / 4);
+  padding: 64px;
+  text-align: center;
+}
+
+.productImage {
+  width: 100%;
+}
+
+.textProduct {
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin: 10px 0;
+}
+
+.card p {
+  margin: 10px 0;
+}
+
+.btn {
+  padding: 5px 40px;
+  border: thin solid rgb(119, 98, 28);
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: rgb(119, 98, 28);
+  color: #fff;
+}
+
+.card:hover {
+  border: thin solid #ccc;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px #ccc;
+}

@@ -1,9 +1,10 @@
-import styles from './styles.module.css';
-import logo from '../../assets/images/logo-2.png';
-import basketShoppingIcon from '../../assets/icons/basket-shopping.svg';
-import searchIcon from '../../assets/icons/search.svg';
-import loginIcon from '../../assets/icons/circle-user.svg';
-import { settingIcon } from '../../assets/icons';
+import styles from "./styles.module.css";
+import logo from "../../assets/images/logo-2.png";
+import basketShoppingIcon from "../../assets/icons/basket-shopping.svg";
+import searchIcon from "../../assets/icons/search.svg";
+import loginIcon from "../../assets/icons/circle-user.svg";
+import { settingIcon } from "../../assets/icons";
+import { Link } from "react-router-dom";
 
 function Header(props: any) {
   return (
@@ -14,22 +15,13 @@ function Header(props: any) {
       <nav className={styles.navWrapper}>
         <ul className={styles.navList}>
           <li className={styles.menuItem}>
-            <a href="">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="">Menu</a>
+            <Link to="/menu">Menu</Link>
           </li>
           <li>
-            <a href="">Reservation</a>
-          </li>
-          <li>
-            <a href="">Pages</a>
-          </li>
-          <li>
-            <a href="">Blog</a>
-          </li>
-          <li>
-            <a href="">Shop</a>
+            <Link to="/blog">Blog</Link>
           </li>
         </ul>
         <a href="#">
