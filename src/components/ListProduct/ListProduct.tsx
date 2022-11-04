@@ -8,7 +8,6 @@ import axios from "../../utils/axios";
 function ListProduct(props) {
   const [modalShown, setModalShow] = useState(false);
   const [product, setProduct] = useState(null);
-  console.log("props", props);
 
   const handleOnClickAddProduct = useCallback(async (id: string) => {
     const res = await axios.get(`/products/${id}`);

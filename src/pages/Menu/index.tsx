@@ -6,8 +6,9 @@ import axios from "../../utils/axios";
 import React, { useCallback, useEffect, useState } from "react";
 import ModalLayout from "../../components/Layout/Modal/Modal";
 import ProductDetail from "../../components/ProductDetail/ProductDetail";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
-function ProductPage() {
+function ProductPage(props) {
   const [products, setProducts] = useState([]);
 
   // // Fetcher function
@@ -30,14 +31,7 @@ function ProductPage() {
     return <p>Loading...</p>;
   }
 
-  return (
-    <React.Fragment>
-      <MainLayout>
-        <Background>Menu</Background>
-        <ListProduct products={products} />
-      </MainLayout>
-    </React.Fragment>
-  );
+  return <ListProduct products={products} />;
 }
 
 export default ProductPage;

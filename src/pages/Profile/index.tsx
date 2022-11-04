@@ -23,14 +23,8 @@ import Product from "../../components/Home/Product/Product";
 import HomeLayout from "../../components/Layout/Home/HomeLayout";
 import MainLayout from "../../components/Layout/Main/MainLayout";
 
-function ProfilePage() {
-  return (
-    <React.Fragment>
-      <MainLayout>
-        <Background>Profile</Background>
-      </MainLayout>
-    </React.Fragment>
-  );
+function ProfilePage(props) {
+  return <></>;
 }
 
 export default ProfilePage;
