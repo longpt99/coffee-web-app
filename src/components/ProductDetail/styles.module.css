@@ -1,0 +1,84 @@
+.wrapper {
+  display: flex;
+  flex-grow: 1;
+  padding: 50px;
+}
+
+.leftSide,
+.rightSide {
+  width: 50%;
+}
+
+.leftSide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftSide img {
+  width: 50%;
+}
+
+/* Right */
+
+.infoContainer .textName {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #b28a63;
+}
+
+.infoContainer .textDescription {
+  font-style: italic;
+  opacity: 0.8;
+  margin: 10px 0;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.attributeContent {
+  display: flex;
+  margin: 20px 0;
+}
+
+.attributeContent .listAttribute span {
+  padding: 5px 5px;
+  cursor: pointer;
+  border: thin solid #b28a63;
+  margin: 0 5px;
+  border-radius: 3px;
+}
+
+.itemLabel {
+  margin-right: 20px;
+  font-weight: 600;
+}
+
+.addItem {
+  border-radius: 5px;
+}
+
+.addItem span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+
+  text-align: center;
+  /* background-color: #b28a63; */
+  border: thin solid #ccc;
+  user-select: none;
+  cursor: pointer;
+}
+
+.addItem span:first-child {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.addItem span:last-child {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}

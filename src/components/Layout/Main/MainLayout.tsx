@@ -1,4 +1,5 @@
-import styles from './styles.module.css';
+import React from "react";
+import styles from "./styles.module.css";
 
 function MainLayout({ children }) {
   return <section className={styles.layout}>{children}</section>;

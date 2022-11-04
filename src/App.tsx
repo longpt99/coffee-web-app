@@ -78,6 +78,9 @@ function App() {
             <Route path="/blog">
               <BlogPage />
             </Route>
+            <Route path="/profile">
+              <ProfilePage />
+            </Route>
           </Switch>
         </Router>
       </AxiosInterceptor>

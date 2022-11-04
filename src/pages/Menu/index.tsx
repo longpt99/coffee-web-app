@@ -3,45 +3,22 @@ import Background from "../../components/Backgound/Background";
 import ListProduct from "../../components/ListProduct/ListProduct";
 import { useQuery } from "react-query";
 import axios from "../../utils/axios";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ModalLayout from "../../components/Layout/Modal/Modal";
 import ProductDetail from "../../components/ProductDetail/ProductDetail";
 
 function ProductPage() {
-  const [modalShown, toggleModal] = useState(false);
-  const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState([]);
-  // Fetcher function
+
+  // // Fetcher function
   const getProducts = async () => {
     const res = await axios.get(`/products`);
     return res.data;
   };
-  const getProductDetail = async (productId) => {
-    console.log("productId: ", productId);
 
-    const res = await axios.get(`/products/${productId}`);
-    return res.data;
-  };
-
-  const productList = useQuery("products", getProducts);
-  // Fetcher function
-  const productDetail = useQuery(
-    ["productDetail", productId],
-    () => getProductDetail(productId),
-    {
-      enabled: false,
-      refetchOnWindowFocus: false,
-    }
-  );
-
-  function handleOnClickAddProduct(id) {
-    console.log("handleOnClickAddProduct");
-
-    // setProductId(id);
-    toggleModal(!modalShown);
-    productDetail.refetch();
-  }
+  const productList = useQuery("products", getProducts, {
+    refetchOnWindowFocus: false,
+  });
 
   useEffect(() => {
     if (productList.data) {
@@ -55,21 +32,9 @@ function ProductPage() {
 
   return (
     <React.Fragment>
-      {modalShown && (
-        <ModalLayout
-          shown={modalShown}
-          close={() => {
-            toggleModal(!modalShown);
-          }}
-        >
-          <ProductDetail>{product}</ProductDetail>
-        </ModalLayout>
-      )}
       <MainLayout>
         <Background>Menu</Background>
-        <ListProduct handleOnClickAddProduct={handleOnClickAddProduct}>
-          {products}
-        </ListProduct>
+        <ListProduct products={products} />
       </MainLayout>
     </React.Fragment>
   );

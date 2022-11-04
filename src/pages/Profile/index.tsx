@@ -13,6 +13,7 @@ import {
   moment3,
   moment4,
 } from "../../assets/images";
+import Background from "../../components/Backgound/Background";
 import Carousel from "../../components/Carousel/Carousel";
 import CarouselItem from "../../components/CarouselItem/CarouselItem";
 import Footer from "../../components/Footer/Footer";
@@ -20,9 +21,16 @@ import Category from "../../components/Home/Category/Category";
 import Moment from "../../components/Home/Moment/Moment";
 import Product from "../../components/Home/Product/Product";
 import HomeLayout from "../../components/Layout/Home/HomeLayout";
+import MainLayout from "../../components/Layout/Main/MainLayout";
 
 function ProfilePage() {
-  return <React.Fragment>Profile Page</React.Fragment>;
+  return (
+    <React.Fragment>
+      <MainLayout>
+        <Background>Profile</Background>
+      </MainLayout>
+    </React.Fragment>
+  );
 }
 
 export default ProfilePage;
